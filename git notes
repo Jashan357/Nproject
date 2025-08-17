@@ -1,0 +1,81 @@
+cd := change directory(folder )--------------//use it when u want to switch to inside folder of an outside folder
+//  like:= a(b) means 'b' folder is inside of 'a' folder and you want to access 'b' folder 
+just write in the terminal :=   cd foldername(on which u want to switch to)/
+
+
+
+-----------
+in order to exit the folder just write:= cd ..
+___________________________________________________________________________________________
+in order to clear the terminal just type := clear in the terminal
+in order to check the files inside a folder use "ls"
+in order to access hidden files also use:="ls --a"// a means all
+
+Correct ways to list hidden files in PowerShell:
+
+Use -Force with ls or Get-ChildItem:
+
+ls -Force
+
+
+or
+
+Get-ChildItem -Force
+
+
+This will show hidden files and directories.
+___________________________________________________________________________________________
+to check status of changes := git status
+// steps to add files on git
+step 1:= add
+step 2 := commit
+step 3 := push it to git
+___________________________________________________________________________________________
+how will u add?
+if there is only one file to add then use: git add filename
+if there are too many file to add the use:= git add . //------this will add all the files to git{can also be use for a single file}
+
+___________________________________________________________________________________________
+// in order to commit
+git commit -m "write some msg here"
+
+___________________________________________________________________________________________
+in order to push
+git push origin main----{here origin means the remote repo which is copied here(readme.md)} & main is in which file is added (can check on github)
+
+___________________________________________________________________________________________
+to create a new folder use:= mkdir filename
+___________________________________________________________________________________________
+in order to make a file  a git reposatory,in hidden file it must have ".git" file
+process to check:=use "ls -a"
+if there is not then add it by:=git init
+___________________________________________________________________________________________
+ git push -u origin main:= by using -u ,we have specify that we are using main as a origin-----{not confirmed}....
+ ...........now we just have to write git push to locate the file to main
+ ___________________________________________________________________________________________
+ //branches
+ to change the branch ,we use:= git checkout <-branchgname->
+ ----------------------------
+ in order to delete a branch ,you must not be on that branch which you want to delete-------means
+  if there are two branches a & b and you want to delete b branch then you have to be on a branch to delet b branch 
+  ,otherwise that branch cant be delete
+  ___________________________________________________________________________________________
+  //if wanted to know more about branches ,then check out the video of github from 50:00(just an estimate)
+  ___________________________________________________________________________________________
+//merge the files
+___________________________________________________________________________________________
+now if u open the merged file in vs code ,u will see that changes are not reflecting on it ,now to reflect the changes
+use:=git pull origin main
+___________________________________________________________________________________________
+there are two ways two merge branches:=
+1st) pull request (go through video)
+2nd) use:= git merge  filename(other branch name with which u want to merge)
+but  if you make changes in two branches at the same place ,then conflict arise
+then u will see some option ,u need to select one
+____________________________________________________________________________________________
+___________________________________________________________________________________________
+___________________________________________________________________________________________
+sometimes we do change in a file that we dont want to do...........so to resolve all of this we use "UNDOING CHANGES"
+1st) staged changes means those changes which we  have add but have not done the commit yet
+if you make changes in one file only then use=: git reset filename.
+if there are multiple files then use:= git reset
