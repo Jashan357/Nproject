@@ -24,27 +24,35 @@ Get-ChildItem -Force
 
 
 This will show hidden files and directories.
-___________________________________________________________________________________________
+
+****in hidden files there must be a .git file which show that it is git file 
+_________________________________________________________________________________
 to check status of changes := git status
 // steps to add files on git
 step 1:= add
 step 2 := commit
 step 3 := push it to git
 ___________________________________________________________________________________________
-how will u add?
-if there is only one file to add then use: git add filename
-if there are too many file to add the use:= git add . //------this will add all the files to git{can also be use for a single file}
+how will u add files (newly created files or existing files to git)?
+if there is only one file to add then use:- git add filename
+if there are too many  file to add the use:= git add . //------this will add all the files to git{can also be use for a single file}
 
 ___________________________________________________________________________________________
-// in order to commit
-git commit -m "write some msg here"
+// in order to commit 
+git commit -m "write  some msg here"
 
 ___________________________________________________________________________________________
-in order to push
-git push origin main----{here origin means the remote repo which is copied here(readme.md)} & main is in which file is added (can check on github)
+in order to push 
+git push origin main----{here origin  means the remote repo which is copied here(readme.md)} & main is in which file is added (can check on github)
 
 ___________________________________________________________________________________________
-to create a new folder use:= mkdir filename
+to create a new folder use:= mkdir filename ---------it will create a new folder
+now the created folder is not git file ,to make it 
+**use "git init" thats it.now the new folder is a git reposatory.now the new folder must have an origin ,to set the origin for the new file 
+**use" git remote add origin link"........here link is of that reposatory in which you wanted to add the new folder.and "git remote add" 
+means we are adding a new remote(means new repo in github) & to verify the origin 
+**use git remote -v 
+
 ___________________________________________________________________________________________
 in order to make a file  a git reposatory,in hidden file it must have ".git" file
 process to check:=use "ls -a"
@@ -54,13 +62,39 @@ ________________________________________________________________________________
  ...........now we just have to write git push to locate the file to main
  ___________________________________________________________________________________________
  //branches
- to change the branch ,we use:= git checkout <-branchgname->
+ "main " branch is the main branch of github
+ in order to check the branch on which we are right now 
+ **use:=git branch and if you are on a branch other than "main" then in order to rename to the main branch 
+ use:=git branch -M main ..........& now my folder is ready to be upload on github
+ ___________________________________________________________________________________________
+-----WORKFLOW------
+1)make a repo on github
+2)make a clone on vscode
+3)do work ,make CHANGES  
+4) add it to github
+5)commit 
+6)push  
+ ___________________________________________________________________________________________
+ to change the branch ,we use:= git checkout <-branchgname-> --------------use it also to switch to main branch 
+ in order to make a new branch use:=git cheeckout -b newbranchname 
+ ### when you create a new branch and work on it you will notice that the changes will not reflect to main branch
+ (question :=why cant we just work on main branch ?why create a new one?
+ answer:=cause on main branch ,senior developer works on it & we work on  a new branch & after we finish work ,we send pull request to 
+ the main branch(senior developer) so that he/she can give us approval whether we can make those changes or not)
+ to make changes in the main branch also ....
+ 1st:= push the folder to the newly created branch by:=git push origin newbranchname
+ 2nd:=now there will be an option := "compare and pull request"
+
+now after accepting request ,you will notice that the changes are reflecting in github but not in local(vs code)
+to make those changes appear on vs code 
+##use :=git pull origin main-------(it will fetch and download content from the remote repo and immidietly update the local repo to match that content)
+
  ----------------------------
  in order to delete a branch ,you must not be on that branch which you want to delete-------means
   if there are two branches a & b and you want to delete b branch then you have to be on a branch to delet b branch 
   ,otherwise that branch cant be delete
   ___________________________________________________________________________________________
-  //if wanted to know more about branches ,then check out the video of github from 50:00(just an estimate)
+
   ___________________________________________________________________________________________
 //merge the files
 ___________________________________________________________________________________________
@@ -68,14 +102,69 @@ now if u open the merged file in vs code ,u will see that changes are not reflec
 use:=git pull origin main
 ___________________________________________________________________________________________
 there are two ways two merge branches:=
-1st) pull request (go through video)
+1st) pull request 
 2nd) use:= git merge  filename(other branch name with which u want to merge)
 but  if you make changes in two branches at the same place ,then conflict arise
 then u will see some option ,u need to select one
 ____________________________________________________________________________________________
 ___________________________________________________________________________________________
 ___________________________________________________________________________________________
-sometimes we do change in a file that we dont want to do...........so to resolve all of this we use "UNDOING CHANGES"
+sometimes we do change in a file that we dont want to do...........so to resolve all of this we use "UNDOING CHANGES CONCEPT" 
 1st) staged changes means those changes which we  have add but have not done the commit yet
 if you make changes in one file only then use=: git reset filename.
 if there are multiple files then use:= git reset
+2nd) if there is a file in which you have add & commit and you want to undo one commit, just 
+##use:= git reset HEAD~1---------
+what happen is we store commit let as [1] ,[2],[3],[4] now 4th commit is that latest commit which is wrong so to move back to the 3rd commit
+we use this command 
+##we can check all the commit by using::=="git log"by using this you can check the "COMMIT HASH" which will be helpful for making jump 
+from 4th commit to 2nd commit 
+3rd) commit changes (for many commits[from 4th commit to 2nd or 1st)
+use :=git reset "githash"----------githash will be access from git log
+use :-git reset --hard "githash"-----------(--hard) is used to 
+In Git, the --hard option with git reset means:
+
+✅ git reset --hard <commit-hash>
+
+It moves the HEAD, the current branch, and the working directory to the specified commit.
+All changes in:
+
+Staging area (index)
+
+Working directory (your files)
+will be discarded permanently.
+
+✅ Breakdown:
+
+git reset <commit> → moves HEAD to a commit (affects history)
+
+--soft → keeps changes staged (only moves HEAD)
+
+--mixed (default) → keeps changes in working directory (unstaged)
+
+--hard → deletes everything after that commit from your files and staging area
+
+⚠ Important Warning
+
+--hard is destructive:
+
+Uncommitted changes will be lost.
+
+There’s no easy undo unless you have backups or reflog.
+
+Example:
+
+git reset --hard abc123
+
+
+✅ After this:
+
+HEAD points to abc123.
+
+Files in your working directory match abc123.
+
+Everything after abc123 is gone locally
+____________________________________________________________________________________________
+###------------FORK---------
+fork is  used to copy a project from others reposatory to my reposatory
+when you open someone's project and wanted to add in yours to make some changes--------just click "fork"
