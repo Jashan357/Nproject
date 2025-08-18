@@ -75,8 +75,8 @@ ________________________________________________________________________________
 5)commit 
 6)push  
  ___________________________________________________________________________________________
- to change the branch ,we use:= git checkout <-branchgname-> --------------use it also to switch to main branch 
- in order to make a new branch use:=git cheeckout -b newbranchname 
+ To change the branch ,we use:= git checkout <-branchgname-> --------------use it also to switch to main branch 
+ in order to make a new branch use:=git checkout -b newbranchname 
  ### when you create a new branch and work on it you will notice that the changes will not reflect to main branch
  (question :=why cant we just work on main branch ?why create a new one?
  answer:=cause on main branch ,senior developer works on it & we work on  a new branch & after we finish work ,we send pull request to 
@@ -99,7 +99,7 @@ to make those changes appear on vs code
 //merge the files
 ___________________________________________________________________________________________
 now if u open the merged file in vs code ,u will see that changes are not reflecting on it ,now to reflect the changes
-use:=git pull origin main
+use:=git pull origin main 
 ___________________________________________________________________________________________
 there are two ways two merge branches:=
 1st) pull request 
@@ -122,27 +122,27 @@ from 4th commit to 2nd commit
 3rd) commit changes (for many commits[from 4th commit to 2nd or 1st)
 use :=git reset "githash"----------githash will be access from git log
 use :-git reset --hard "githash"-----------(--hard) is used to 
-In Git, the --hard option with git reset means:
+In Git, the --hard option with git reset means:  
 
-✅ git reset --hard <commit-hash>
+✅ git reset --hard <commit-hash> 
 
-It moves the HEAD, the current branch, and the working directory to the specified commit.
-All changes in:
+It moves the HEAD, the current branch, and the working directory to the specified commit.           
+All changes in:   
 
-Staging area (index)
+Staging area (index)           
 
-Working directory (your files)
-will be discarded permanently.
+Working directory (your files)      
+will be discarded permanently.     
 
-✅ Breakdown:
+✅ Breakdown:     
 
-git reset <commit> → moves HEAD to a commit (affects history)
+git reset <commit> → moves HEAD to a commit (affects history)   
 
---soft → keeps changes staged (only moves HEAD)
+--soft → keeps changes staged (only moves HEAD)       
 
---mixed (default) → keeps changes in working directory (unstaged)
+--mixed (default) → keeps changes in working directory (unstaged)          
 
---hard → deletes everything after that commit from your files and staging area
+--hard → deletes everything after that commit from your files and staging area  
 
 ⚠ Important Warning
 
