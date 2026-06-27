@@ -1,3 +1,682 @@
+CHANEGS MADE BY CLAUDE ai  in my notes:
+# Git & GitHub Notes — Beginner to Advanced
+
+---
+
+# LEVEL 1: BASICS (Terminal Navigation)
+
+Before using Git, you need to be comfortable with terminal commands.
+
+---
+
+## Change Directory
+
+```
+cd foldername
+```
+
+use it when u want to switch to inside folder of an outside folder
+like:= a(b) means 'b' folder is inside of 'a' folder and you want to access 'b' folder
+just write in the terminal := cd foldername(on which u want to switch to)/
+
+---
+
+## Move Back (Exit a Folder)
+
+```
+cd ..
+```
+
+---
+
+## Clear the Terminal
+
+Linux / Git Bash:
+```
+clear
+```
+
+Windows PowerShell:
+```
+cls
+```
+
+---
+
+## Check Files Inside a Folder
+
+```
+ls
+```
+
+---
+
+## Show Hidden Files
+
+Linux / Git Bash:
+```
+ls -a
+```
+
+PowerShell:
+```
+ls -Force
+```
+or
+```
+Get-ChildItem -Force
+```
+
+> ****in hidden files there must be a .git file which shows that it is a git repository
+
+---
+
+## Create a New Folder
+
+```
+mkdir foldername
+```
+
+it will create a new folder
+
+---
+
+---
+
+# LEVEL 2: GIT SETUP (Getting Started with Git)
+
+---
+
+## What is Git?
+
+Git is a Version Control System (VCS). Think of it as a **time machine for your code**.
+
+It helps you:
+- Track changes in files
+- Restore older versions
+- Work with multiple developers
+- Manage different versions of a project
+
+---
+
+## What is GitHub?
+
+GitHub is a cloud platform that stores Git repositories **online**.
+
+```
+Your Computer  ← Git (local)
+
+↓
+
+GitHub Server  ← GitHub (online)
+```
+
+Git manages versions. GitHub hosts them.
+
+---
+
+## Initialize Git
+
+Turn any folder into a Git repository:
+
+```
+git init
+```
+
+Now the folder contains a hidden `.git` file — Git will now track this project.
+
+> To verify: use `ls -a` and check if `.git` is present.
+> If not, run `git init` to add it.
+
+---
+
+## Create a Repo on GitHub & Connect it Locally
+
+```
+git remote add origin link
+```
+
+here `link` is the URL of the GitHub repository you want to connect to.
+`git remote add` means we are adding a new remote (a repo on GitHub).
+
+To verify the connection:
+```
+git remote -v
+```
+
+You'll see:
+```
+origin (fetch)
+origin (push)
+```
+
+---
+
+---
+
+# LEVEL 3: CORE WORKFLOW (Add → Commit → Push)
+
+This is what you'll do every single day.
+
+---
+
+## Check Repository Status
+
+```
+git status
+```
+
+This tells you:
+- Current branch
+- Modified files
+- Deleted files
+- Untracked files
+- Staged files
+
+> This is the command you'll use the most.
+
+---
+
+## Steps to Add Files to Git
+
+```
+Step 1 → add
+Step 2 → commit
+Step 3 → push
+```
+
+---
+
+## Add Files
+
+If there is only one file to add:
+```
+git add filename
+```
+
+If there are too many files to add:
+```
+git add .
+```
+
+this will add all the files to git (can also be used for a single file)
+
+---
+
+## Commit Changes
+
+A commit is like taking a **snapshot** of your project.
+
+```
+git commit -m "write some msg here"
+```
+
+Always write **meaningful** commit messages.
+
+Good:
+```
+Added Login Page
+Fixed Navbar Bug
+Implemented Currency Converter
+```
+
+Bad:
+```
+Update
+Changes
+Hello
+```
+
+---
+
+## Push to GitHub
+
+```
+git push origin main
+```
+
+here `origin` means the remote repo on GitHub & `main` is the branch name (can check on GitHub).
+
+### First Push
+
+```
+git push -u origin main
+```
+
+by using `-u`, we specify that we are using `main` as the default upstream.
+After this first time, you can just use:
+
+```
+git push
+```
+
+---
+
+## Daily Git Workflow
+
+```
+git status
+
+↓
+
+git add .
+
+↓
+
+git commit -m "message"
+
+↓
+
+git push
+```
+
+---
+
+## Pull Changes (Download Latest from GitHub)
+
+```
+git pull origin main
+```
+
+it will fetch and download content from the remote repo and immediately update the local repo to match that content.
+
+Short form (after setting upstream):
+```
+git pull
+```
+
+---
+
+## Clone a Repository
+
+Instead of downloading ZIP files, clone the repository:
+
+```
+git clone repository-link
+```
+
+This downloads the **complete Git history** along with all files.
+
+---
+
+---
+
+# LEVEL 4: BRANCHES (Parallel Development)
+
+---
+
+## What is a Branch?
+
+A branch is an **independent line of development**.
+
+Default branch:
+```
+main
+```
+
+---
+
+## Why Can't We Just Work on Main Branch?
+
+> Because on `main` branch, senior developers work on it. We work on a new branch & after we finish work, we send a **pull request** to the main branch (senior developer) so that he/she can give approval whether we can make those changes or not.
+
+The structure looks like this:
+```
+main
+
+│
+
+├── login-feature
+
+├── payment-feature
+
+├── dashboard-feature
+```
+
+Each developer works separately on their branch. After completion, they create a Pull Request.
+
+---
+
+## Check Current Branch
+
+```
+git branch
+```
+
+---
+
+## Rename Branch to Main
+
+If you are on a branch other than `main`:
+```
+git branch -M main
+```
+
+now my folder is ready to be uploaded on GitHub.
+
+---
+
+## Create a New Branch
+
+```
+git checkout -b newbranchname
+```
+
+---
+
+## Switch Between Branches
+
+```
+git checkout branchname
+```
+
+use it also to switch back to main branch:
+```
+git checkout main
+```
+
+> when you create a new branch and work on it, you will notice that the changes will **not** reflect to main branch — that's the whole point!
+
+---
+
+## Push a New Branch to GitHub
+
+```
+git push origin newbranchname
+```
+
+now there will be an option on GitHub: **"Compare and pull request"**
+
+---
+
+## Delete a Branch
+
+You must **not** be on the branch you want to delete.
+
+If there are two branches `a` & `b` and you want to delete `b`, you have to be on branch `a` first:
+
+```
+git checkout main
+
+git branch -d branchname
+```
+
+---
+
+---
+
+# LEVEL 5: PULL REQUESTS & MERGING
+
+---
+
+## Pull Request
+
+A Pull Request asks GitHub:
+> "Please merge my branch into main."
+
+Senior developers review the code before merging.
+
+Steps:
+1. Push the folder to your newly created branch: `git push origin newbranchname`
+2. Now there will be an option on GitHub: **"Compare and Pull Request"**
+3. After the PR is accepted, the changes reflect on GitHub but **not** locally in VS Code
+4. To reflect the changes locally: `git pull origin main`
+
+---
+
+## Merge Branches
+
+There are two ways to merge branches:
+
+**1st) Pull Request** (through GitHub — recommended for teams)
+
+**2nd) Merge locally:**
+```
+git merge branchname
+```
+
+(other branch name with which you want to merge)
+
+> but if you make changes in two branches **at the same place**, then a **conflict** arises — you will see options to choose from, and you need to select one manually.
+
+---
+
+## After Merging — Reflect Changes Locally
+
+Now if you open the merged file in VS Code, you will see that changes are not reflecting on it. To reflect the changes:
+
+```
+git pull origin main
+```
+
+---
+
+---
+
+# LEVEL 6: UNDOING CHANGES
+
+Sometimes we make changes in a file that we don't want. To fix this, we use the **Undoing Changes** concept.
+
+---
+
+## Case 1: Staged Changes (Added but NOT Committed)
+
+staged changes means those changes which we have added but have NOT done the commit yet.
+
+If you made changes in **one file only**:
+```
+git reset filename
+```
+
+If there are **multiple files**:
+```
+git reset
+```
+
+---
+
+## Case 2: Undo Last Commit (One Step Back)
+
+If you have added & committed a file and want to undo just the last commit:
+
+```
+git reset HEAD~1
+```
+
+What happens: we store commits like [1], [2], [3], [4]. Now the 4th commit is the latest wrong commit. This command moves you back to the 3rd commit.
+
+---
+
+## View All Commits
+
+```
+git log
+```
+
+By using this you can check the **COMMIT HASH** — which will be helpful for jumping from the 4th commit to the 2nd or 1st commit.
+
+---
+
+## Case 3: Jump to Any Previous Commit
+
+```
+git reset commitHash
+```
+
+githash will be accessed from `git log`
+
+---
+
+## Case 4: Hard Reset (Destructive — Use Carefully)
+
+```
+git reset --hard commitHash
+```
+
+**What `--hard` does:**
+
+It moves the HEAD, the current branch, and the working directory to the specified commit.
+
+All changes in:
+- Staging area (index)
+- Working directory (your files)
+
+will be **discarded permanently**.
+
+**Breakdown:**
+```
+git reset --soft   → keeps changes staged (only moves HEAD)
+git reset --mixed  → keeps changes in working directory (unstaged) [DEFAULT]
+git reset --hard   → deletes everything after that commit from your files and staging area
+```
+
+**⚠ Important Warning:**
+- `--hard` is **destructive**
+- Uncommitted changes will be **lost**
+- There's no easy undo unless you have backups or reflog
+
+Example:
+```
+git reset --hard abc123
+```
+
+After this:
+- HEAD points to abc123
+- Files in your working directory match abc123
+- Everything after abc123 is gone locally
+
+---
+
+---
+
+# LEVEL 7: FORKING (Open Source Contribution)
+
+---
+
+## What is a Fork?
+
+Fork is used to **copy a project from someone else's repository to your own repository**.
+
+When you open someone's project and want to add it to yours to make some changes — just click **"Fork"** on GitHub.
+
+Workflow:
+```
+Original Repository
+
+↓
+
+Fork
+
+↓
+
+Your GitHub Repository
+
+↓
+
+Clone
+
+↓
+
+Modify
+
+↓
+
+Push
+
+↓
+
+Pull Request
+```
+
+---
+
+---
+
+# QUICK REFERENCE: Most Common Git Commands
+
+```
+git init              → Initialize a Git repository
+git status            → Check current status
+git add .             → Stage all changes
+git add filename      → Stage a specific file
+git commit -m ""      → Commit with a message
+git push              → Push to GitHub
+git pull              → Pull latest changes
+git clone             → Clone a repository
+git branch            → List branches
+git checkout          → Switch branch
+git checkout -b       → Create and switch to new branch
+git merge             → Merge a branch
+git log               → View commit history
+git reset             → Unstage changes
+git reset HEAD~1      → Undo last commit
+git reset --hard hash → Hard reset to a commit
+git remote -v         → Verify remote connection
+git remote add origin → Connect to GitHub repo
+git branch -M main    → Rename branch to main
+git push -u origin main → First push with upstream set
+git branch -d name    → Delete a branch
+```
+
+---
+
+# COMPLETE GIT WORKFLOW (End to End)
+
+```
+1. Create Repository on GitHub
+
+↓
+
+2. Clone Repository → git clone link
+
+↓
+
+3. Write Code
+
+↓
+
+4. git status
+
+↓
+
+5. git add .
+
+↓
+
+6. git commit -m "message"
+
+↓
+
+7. git push
+
+↓
+
+8. Repeat Steps 3–7
+
+↓
+
+9. Create Branch for New Feature → git checkout -b featurename
+
+↓
+
+10. Push Branch → git push origin featurename
+
+↓
+
+11. Create Pull Request on GitHub
+
+↓
+
+12. Senior reviews & Merges
+
+↓
+
+13. git pull origin main (to sync locally)
+```
+
+
+my handwritten notes:
+
 cd := change directory(folder )--------------//use it when u want to switch to inside folder of an outside folder
 //  like:= a(b) means 'b' folder is inside of 'a' folder and you want to access 'b' folder 
 just write in the terminal :=   cd foldername(on which u want to switch to)/
