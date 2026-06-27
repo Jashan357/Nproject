@@ -55,7 +55,7 @@ means we are adding a new remote(means new repo in github) & to verify the origi
 
 ___________________________________________________________________________________________
 in order to make a file  a git reposatory,in hidden file it must have ".git" file
-process to check:=use "ls -a"
+process to check:=use "get-childitem -force"
 if there is not then add it by:=git init
 ___________________________________________________________________________________________
  git push -u origin main:= by using -u ,we have specify that we are using main as a origin-----{not confirmed}....
@@ -68,12 +68,12 @@ ________________________________________________________________________________
  use:=git branch -M main ..........& now my folder is ready to be upload on github
  ___________________________________________________________________________________________
 -----WORKFLOW------
-1)make a repo on github
+1)make a repo on github        
 2)make a clone on vscode
 3)do work ,make CHANGES  
 4) add it to github
 5)commit 
-6)push  
+6)push    
  ___________________________________________________________________________________________
  To change the branch ,we use:= git checkout <-branchgname-> --------------use it also to switch to main branch 
  in order to make a new branch use:=git checkout -b newbranchname 
@@ -96,16 +96,16 @@ to make those changes appear on vs code
   ___________________________________________________________________________________________
 
   ___________________________________________________________________________________________
-//merge the files
+//merge the files 
 ___________________________________________________________________________________________
-now if u open the merged file in vs code ,u will see that changes are not reflecting on it ,now to reflect the changes
+now if u open the merged  file in vs code ,u will see that changes are not reflecting on it ,now to reflect the changes
 use:=git pull origin main 
 ___________________________________________________________________________________________
-there are two ways two merge branches:=
-1st) pull request 
-2nd) use:= git merge  filename(other branch name with which u want to merge)
-but  if you make changes in two branches at the same place ,then conflict arise
-then u will see some option ,u need to select one
+there are two ways two merge branches:= 
+1st) pull request  
+2nd) use:= git merge  filename(other branch name with which u want to merge) 
+but  if you make changes in two branches at the same place ,then conflict arise 
+then u will see some option ,u need to select one 
 ____________________________________________________________________________________________
 ___________________________________________________________________________________________
 ___________________________________________________________________________________________
@@ -117,16 +117,16 @@ if there are multiple files then use:= git reset
 ##use:= git reset HEAD~1---------
 what happen is we store commit let as [1] ,[2],[3],[4] now 4th commit is that latest commit which is wrong so to move back to the 3rd commit
 we use this command 
-##we can check all the commit by using::=="git log"by using this you can check the "COMMIT HASH" which will be helpful for making jump 
+## we can check all the commit by using::=="git log"by using this you can check the "COMMIT HASH" which will be helpful for making jump 
 from 4th commit to 2nd commit 
-3rd) commit changes (for many commits[from 4th commit to 2nd or 1st)
-use :=git reset "githash"----------githash will be access from git log
+3rd) commit changes (for many commits[from 4th commit to 2nd or 1st) 
+use :=git reset "githash"----------githash will be access from git log  
 use :-git reset --hard "githash"-----------(--hard) is used to 
 In Git, the --hard option with git reset means:  
 
 ✅ git reset --hard <commit-hash> 
 
-It moves the HEAD, the current branch, and the working directory to the specified commit.           
+It moves the HEAD, the current branch, and the working directory to the specified commit.            
 All changes in:   
 
 Staging area (index)           
